@@ -1,0 +1,115 @@
+body,
+html {
+	margin: unset;
+	overflow: hidden;
+}
+
+.default {
+	@grey: rgba(0, 0, 0, 0.54);
+	@darkGrey: rgba(0, 0, 0, 0.54);
+	@red: rgb(205, 4, 67);
+
+	font-family: Roboto;
+	color: @darkGrey;
+
+	input {
+		background-color: rgba(255, 255, 255, 0.5);
+	}
+
+	a {
+		cursor: pointer;
+		text-decoration: none;
+		color: @darkGrey;
+		font-weight: 900;
+		font-family: Roboto-Thin;
+
+		&:hover {
+			color: lighten(@darkGrey, 20%);
+		}
+	}
+
+	.background {
+		opacity: 0.8;
+		transform: translateY(-50%);
+	}
+
+	.adfs-click {
+		display: flex;
+		justify-content: space-evenly;
+		cursor: pointer;
+
+		&:hover * {
+			font-weight: 900;
+			color: darken(@darkGrey, 20%);
+		}
+	}
+
+	.space-vertical {
+		> *:not(:first-child) {
+			margin-top: 20px;
+		}
+	}
+
+	h1 {
+		font-size: 2em;
+	}
+	.thin {
+		font-family: Roboto-Thin;
+	}
+	.heavy {
+		font-weight: 900;
+	}
+	.info {
+		color: @darkGrey;
+	}
+	.spread {
+		> *:not(:first-child) {
+			margin-top: 20px;
+		}
+	}
+	.focus-component {
+		min-width: 45%;
+		transform: translateY(-50%) translateX(-50%);
+
+		.wrapper {
+			padding: 50px;
+			box-sizing: border-box;
+
+			> .titles {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.title {
+					> * {
+						margin: unset;
+					}
+				}
+			}
+
+			> .options {
+				margin-top: 50px;
+
+				> *:not(:first-child) {
+					margin-top: 20px;
+				}
+
+				> .option {
+					&.call-to-action {
+						text-align: center;
+					}
+
+					&.left-right {
+						display: flex;
+						justify-content: space-between;
+					}
+
+					.error {
+						text-align: center;
+						color: @red;
+					}
+				}
+			}
+		}
+	}
+}
