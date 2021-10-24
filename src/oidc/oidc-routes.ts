@@ -27,6 +27,7 @@ export default (app, oidc) => {
 		await base64URLEncode(await sha256(verifier));
 
 	const getAuthCodeUri = async (clientConfig: ClientMetadata) => {
+		debugger;
 		const verifier = await generateVerifier();
 		const challenge = await generateChallenge(verifier);
 		return `/oidc/auth?client_id=${clientConfig.client_id}
@@ -94,12 +95,21 @@ export default (app, oidc) => {
 		},
 	);
 
-	// login page
-	app.get('/interaction/:grant', async (req, res) => {
-		// The initial route hit by the client (Relying Party) that renders the login view if needed.
-		console.log(req);
-		res.sendFile(__dirname + '/public/index.html');
+	// SPA pages
+	const spaPages: string[] = ['/interaction/:grant', '/oidctoken'];
+
+	spaPages.forEach((page) => {
+		app.get(page, async (_req, res) => {
+			// The initial route hit by the client (Relying Party) that renders the login view if needed.
+			res.sendFile(__dirname + '/public/index.html');
+		});
 	});
+
+	// login page
+	// app.get('/interaction/:grant', async (_req, res) => {
+	// 	// The initial route hit by the client (Relying Party) that renders the login view if needed.
+	// 	res.sendFile(__dirname + '/public/index.html');
+	// });
 
 	// post login
 	app.post('/interaction/:grant/login', (req, res) => {

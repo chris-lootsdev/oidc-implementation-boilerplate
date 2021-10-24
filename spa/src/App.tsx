@@ -10,14 +10,13 @@ import { appSettings } from './AppConfig';
 export const ConfigContext = createContext(undefined);
 
 const App = () => {
-	// our config for the entire app which will be passed with context down to avoid drill proppping
-
 	return (
 		<ConfigContext.Provider value={appSettings}>
 			<Layout>
 				<Switch>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/interaction/:uid' component={Login} />
+					<Route exact path='/oidctoken' component={Login} />
 					<Route path='/access-denied' component={AccessDenied}></Route>
 					<Route component={NotFound}></Route>
 				</Switch>

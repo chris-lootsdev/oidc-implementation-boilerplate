@@ -16,5 +16,5 @@ export const appSettings: AppSettingsInterface = {
 		submitErrors: true,
 	},
 	defaultLoginRedirect: '/change-me',
-	loginEndpoint: 'http://10.138.85.221/spa-cct-api/api/v1/cp/login',
+	loginEndpoint: 'login',
 };
